@@ -1,5 +1,6 @@
 export default function  createElement (vnode) {
   const { text, children, data } = vnode
+  const attrs = data && data.attrs
   const domNode = document.createElement(vnode.sel)
 
   if (text !== undefined) {
@@ -14,9 +15,9 @@ export default function  createElement (vnode) {
     }
   }
 
-  if (data !== null && data !== undefined) {
-    for (let key in data) {
-      if (key !== 'key') domNode.setAttribute(key, data[key])
+  if (attrs !== null && attrs !== undefined) {
+    for (let key in attrs) {
+      domNode.setAttribute(key, attrs[key])
     }
   }
 
